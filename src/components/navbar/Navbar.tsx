@@ -1,8 +1,12 @@
-import { Headset, House, Info, ShoppingBag } from "lucide-react";
+import { UserButton, useUser } from "@clerk/clerk-react";
+import { Heart, ShoppingBag } from "lucide-react";
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { Button } from "../ui/button";
 
 const Navbar = () => {
+  const { user } = useUser();
+  console.log(user);
   const [subMenu, setSubMenu] = useState(false);
   useEffect(() => {
     const handleClick = () => setSubMenu(false);
@@ -14,12 +18,10 @@ const Navbar = () => {
     {
       title: "Home",
       href: "/",
-      icon: <House size={15} />,
     },
     {
       title: "Shop",
       href: "/shop",
-      icon: <ShoppingBag size={15} />,
       subMenu: [
         { title: "All Products", href: "/shop/all-products" },
         { title: "New Arrivals", href: "/shop/new-arrivals" },
@@ -33,20 +35,18 @@ const Navbar = () => {
     {
       title: "About Us",
       href: "/about",
-      icon: <Info size={15} />,
     },
     {
       title: "Contact",
       href: "/contact",
-      icon: <Headset size={15} />,
     },
   ];
 
   return (
-    <nav className="w-full fixed top-0 bg-transparent left-0 md:p-5 z-50">
-      <div className="w-full md:w-3/4 mx-auto flex items-center justify-between py-3 px-4 md:rounded-lg bg-black text-white">
-        {/* menu items */}
-        <ul className="items-center gap-4 hidden md:flex">
+    <nav className="w-full fixed top-0 left-0 z-50 bg-transparent md:p-5">
+      <div className="w-full lg:w-5/6 mx-auto flex items-center justify-between py-3 px-4 md:rounded-lg bg-black text-white font-primary">
+        {/* Left: Menu items */}
+        <ul className="items-center gap-1 hidden md:flex">
           {menuItems.map((item, index) => (
             <li
               key={index}
@@ -54,7 +54,6 @@ const Navbar = () => {
               className="relative group hover:bg-white/40 rounded-lg transition-all duration-200"
             >
               <NavLink className="flex items-center text-sm p-2" to={item.href}>
-                {item.icon}
                 <span className="ml-2">{item.title}</span>
               </NavLink>
 
@@ -81,11 +80,33 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
-        {/* logo */}
+
+        {/* Center: Logo */}
         <div>
           <p className="font-fancy text-xl md:text-3xl">Classy Q</p>
         </div>
-        {/* Others */}
+
+        {/* Right: Icons + Auth */}
+        <div className="flex items-center justify-center space-x-3">
+          <Link to={"/wishlist"} className="relative">
+            <div className="absolute top-0 right-0 w-2 h-2 rounded-full bg-red-500"></div>
+            <Heart />
+          </Link>
+          <Link to={"/cart"} className="relative">
+            <div className="absolute top-0 right-0 w-2 h-2 rounded-full bg-red-500"></div>
+            <ShoppingBag />
+          </Link>
+          <div className="flex items-center justify-center">
+            {!user ? (
+              <NavLink to={"/login"}>
+                {" "}
+                <Button>Login</Button>{" "}
+              </NavLink>
+            ) : (
+              <UserButton />
+            )}
+          </div>
+        </div>
       </div>
     </nav>
   );

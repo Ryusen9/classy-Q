@@ -1,6 +1,10 @@
+import Hero from "@/components/hero/hero";
+
 const HomeLayout = () => {
   return (
-    <div>Home Layout</div>
-  )
-}
-export default HomeLayout
+    <>
+      <Hero />
+    </>
+  );
+};
+export default HomeLayout;
