@@ -1,13 +1,25 @@
 import { UserButton, useUser } from "@clerk/clerk-react";
-import { Heart, ShoppingBag } from "lucide-react";
+import { Heart, Moon, ShoppingBag, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Button } from "../ui/button";
 
 const Navbar = () => {
   const { user } = useUser();
-  console.log(user);
   const [subMenu, setSubMenu] = useState(false);
+  const [theme, setTheme] = useState<boolean>(false);
+  const toggleTheme = () => {
+    setTheme(!theme);
+  };
+  useEffect(() => {
+    if (theme) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  }, [theme]);
   useEffect(() => {
     const handleClick = () => setSubMenu(false);
     window.addEventListener("click", handleClick);
@@ -44,14 +56,14 @@ const Navbar = () => {
 
   return (
     <nav className="w-full fixed top-0 left-0 z-50 bg-transparent md:p-5">
-      <div className="w-full lg:w-5/6 mx-auto flex items-center justify-between py-3 px-4 md:rounded-lg bg-black text-white font-primary">
+      <div className="w-full lg:w-5/6 mx-auto flex items-center justify-between py-3 px-4 md:rounded-lg bg-black text-white dark:bg-white dark:text-black font-primary">
         {/* Left: Menu items */}
-        <ul className="items-center gap-1 hidden md:flex">
+        <ul className="items-center font-primary gap-1 hidden md:flex">
           {menuItems.map((item, index) => (
             <li
               key={index}
               onMouseEnter={() => item?.subMenu && setSubMenu(true)}
-              className="relative group hover:bg-white/40 rounded-lg transition-all duration-200"
+              className="relative group hover:bg-white/40 dark:hover:bg-black/40 rounded-lg transition-all duration-200"
             >
               <NavLink className="flex items-center text-sm p-2" to={item.href}>
                 <span className="ml-2">{item.title}</span>
@@ -63,13 +75,13 @@ const Navbar = () => {
                   onMouseLeave={() => setSubMenu(false)}
                   className={`absolute top-11 left-1/2 ${
                     subMenu ? "block" : "hidden"
-                  } group-hover:block transform -translate-x-1/2 bg-black text-white rounded-md shadow-lg mt-2 w-48`}
+                  } group-hover:block transform -translate-x-1/2 bg-black text-white dark:bg-white dark:text-black rounded-md shadow-lg mt-2 w-48`}
                 >
                   {item.subMenu.map((subItem, subIndex) => (
                     <li key={subIndex}>
                       <NavLink
                         to={subItem.href}
-                        className="block px-4 py-2 text-sm hover:bg-white/40 transition duration-200"
+                        className="block px-4 py-2 text-sm hover:bg-white/40 dark:hover:bg-black/40 transition duration-200"
                       >
                         {subItem.title}
                       </NavLink>
@@ -96,6 +108,9 @@ const Navbar = () => {
             <div className="absolute top-0 right-0 w-2 h-2 rounded-full bg-red-500"></div>
             <ShoppingBag />
           </Link>
+          <div className="flex items-center justify-center">
+            <button onClick={toggleTheme}>{theme ? <Sun /> : <Moon />}</button>
+          </div>
           <div className="flex items-center justify-center">
             {!user ? (
               <NavLink to={"/login"}>
