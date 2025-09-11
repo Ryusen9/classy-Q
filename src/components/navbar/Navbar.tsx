@@ -8,6 +8,24 @@ const Navbar = () => {
   const { user } = useUser();
   const [subMenu, setSubMenu] = useState(false);
   const [theme, setTheme] = useState<boolean>(false);
+  const [showNavbar, setShowNavbar] = useState(true);
+  const [lastScroll, setLastScroll] = useState(0);
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScroll = window.scrollY;
+      const scrollThreshold = window.innerHeight * 0.1; // 10% of window height
+      if (currentScroll < scrollThreshold) {
+        setShowNavbar(true);
+      } else if (currentScroll > lastScroll) {
+        setShowNavbar(false);
+      } else {
+        setShowNavbar(true);
+      }
+      setLastScroll(currentScroll);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScroll]);
   const toggleTheme = () => {
     setTheme(!theme);
   };
@@ -55,7 +73,11 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="w-full fixed top-0 left-0 z-50 bg-transparent md:p-5">
+    <nav
+      className={`w-full fixed top-0 left-0 z-50 bg-transparent md:p-5 transition-transform duration-300 ${
+        showNavbar ? "translate-y-0" : "-translate-y-full"
+      }`}
+    >
       <div className="w-full lg:w-5/6 mx-auto flex items-center justify-between py-3 px-4 md:rounded-lg bg-black text-white dark:bg-white dark:text-black font-primary">
         {/* Left: Menu items */}
         <ul className="items-center font-primary gap-1 hidden md:flex">
