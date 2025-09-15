@@ -3,6 +3,7 @@ import { Heart, Moon, ShoppingBag, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Button } from "../ui/button";
+import TargetCursor from "../Shared/TargetCursor";
 
 const Navbar = () => {
   const { user } = useUser();
@@ -78,14 +79,14 @@ const Navbar = () => {
         showNavbar ? "translate-y-0" : "-translate-y-full"
       }`}
     >
-      <div className="w-full lg:w-5/6 mx-auto flex items-center justify-between py-3 px-4 md:rounded-lg bg-black text-white dark:bg-white dark:text-black font-primary">
+      <div className="w-full lg:w-5/6 mx-auto flex items-center justify-between py-2 px-4 md:rounded-lg bg-black text-white dark:bg-white dark:text-black font-primary">
         {/* Left: Menu items */}
         <ul className="items-center font-primary gap-1 hidden md:flex">
           {menuItems.map((item, index) => (
             <li
               key={index}
               onMouseEnter={() => item?.subMenu && setSubMenu(true)}
-              className="relative group hover:bg-white/40 dark:hover:bg-black/40 rounded-lg transition-all duration-200"
+              className="relative group cursor-target hover:bg-white/40 dark:hover:bg-black/40 rounded-lg transition-all duration-200"
             >
               <NavLink className="flex items-center text-sm p-2" to={item.href}>
                 <span className="ml-2">{item.title}</span>
@@ -117,7 +118,7 @@ const Navbar = () => {
 
         {/* Center: Logo */}
         <div>
-          <p className="font-fancy text-xl md:text-3xl">Classy Q</p>
+          <p className="cursor-target p-2 font-fancy text-xl md:text-3xl">Classy Q</p>
         </div>
 
         {/* Right: Icons + Auth */}
