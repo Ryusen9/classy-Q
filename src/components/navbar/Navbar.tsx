@@ -3,8 +3,6 @@ import { Heart, Moon, ShoppingBag, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Button } from "../ui/button";
-import TargetCursor from "../Shared/TargetCursor";
-
 const Navbar = () => {
   const { user } = useUser();
   const [subMenu, setSubMenu] = useState(false);
@@ -88,7 +86,7 @@ const Navbar = () => {
               onMouseEnter={() => item?.subMenu && setSubMenu(true)}
               className="relative group cursor-target hover:bg-white/40 dark:hover:bg-black/40 rounded-lg transition-all duration-200"
             >
-              <NavLink className="flex items-center text-sm p-2" to={item.href}>
+              <NavLink className="flex items-center justify-center text-sm p-2" to={item.href}>
                 <span className="ml-2">{item.title}</span>
               </NavLink>
 
@@ -118,7 +116,9 @@ const Navbar = () => {
 
         {/* Center: Logo */}
         <div>
-          <p className="cursor-target p-2 font-fancy text-xl md:text-3xl">Classy Q</p>
+          <p className="cursor-target p-2 font-fancy text-xl md:text-3xl">
+            Classy Q
+          </p>
         </div>
 
         {/* Right: Icons + Auth */}

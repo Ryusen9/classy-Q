@@ -1,0 +1,63 @@
+[
+  {
+    "id": "W001",
+    "name": "Rolex Submariner Date",
+    "brand": "Rolex",
+    "model": "Submariner 126610LN",
+    "description": "The Rolex Submariner Date is a luxury diving watch with superior craftsmanship, designed for precision, durability, and timeless style.",
+    "price": 10500,
+    "discountPrice": 9800,
+    "currency": "USD",
+    "category": "Luxury",
+    "images": [
+      "https://example.com/images/rolex-submariner-front.jpg",
+      "https://example.com/images/rolex-submariner-side.jpg",
+      "https://example.com/images/rolex-submariner-back.jpg"
+    ],
+    "features": {
+      "caseMaterial": "Oystersteel",
+      "caseDiameter": "41mm",
+      "dialColor": "Black",
+      "movement": "Automatic",
+      "waterResistance": "300m",
+      "strapMaterial": "Oystersteel bracelet",
+      "glass": "Scratch-resistant sapphire"
+    },
+    "availability": "In Stock",
+    "stock": 12,
+    "rating": 4.9,
+    "reviewsCount": 245,
+    "createdAt": "2025-09-01T10:15:00Z",
+    "updatedAt": "2025-09-10T14:30:00Z"
+  },
+  {
+    "id": "W002",
+    "name": "Casio G-Shock GA-2100",
+    "brand": "Casio",
+    "model": "GA-2100-1A",
+    "description": "The G-Shock GA-2100 blends toughness with a sleek design, offering shock resistance, water resistance, and everyday functionality.",
+    "price": 120,
+    "discountPrice": 99,
+    "currency": "USD",
+    "category": "Sports",
+    "images": [
+      "https://example.com/images/casio-gshock-front.jpg",
+      "https://example.com/images/casio-gshock-side.jpg"
+    ],
+    "features": {
+      "caseMaterial": "Carbon core guard",
+      "caseDiameter": "45mm",
+      "dialColor": "Black",
+      "movement": "Quartz",
+      "waterResistance": "200m",
+      "strapMaterial": "Resin band",
+      "glass": "Mineral glass"
+    },
+    "availability": "In Stock",
+    "stock": 58,
+    "rating": 4.6,
+    "reviewsCount": 128,
+    "createdAt": "2025-09-05T08:45:00Z",
+    "updatedAt": "2025-09-12T12:20:00Z"
+  }
+]
