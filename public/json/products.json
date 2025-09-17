@@ -59,5 +59,95 @@
     "reviewsCount": 128,
     "createdAt": "2025-09-05T08:45:00Z",
     "updatedAt": "2025-09-12T12:20:00Z"
+  },
+  {
+    "id": "W003",
+    "name": "Apple Watch Series 9",
+    "brand": "Apple",
+    "model": "Series 9 GPS 45mm",
+    "description": "The Apple Watch Series 9 offers advanced health features, seamless iOS integration, fitness tracking, and customizable watch faces.",
+    "price": 399,
+    "discountPrice": 379,
+    "currency": "USD",
+    "category": "Smartwatch",
+    "images": [
+      "https://example.com/images/apple-watch-series9-front.jpg",
+      "https://example.com/images/apple-watch-series9-side.jpg"
+    ],
+    "features": {
+      "caseMaterial": "Aluminum",
+      "caseDiameter": "45mm",
+      "dialColor": "Digital (customizable)",
+      "movement": "Digital",
+      "waterResistance": "50m",
+      "strapMaterial": "Fluoroelastomer band",
+      "glass": "Ion-X strengthened glass"
+    },
+    "availability": "In Stock",
+    "stock": 34,
+    "rating": 4.7,
+    "reviewsCount": 512,
+    "createdAt": "2025-09-08T11:30:00Z",
+    "updatedAt": "2025-09-15T09:20:00Z"
+  },
+  {
+    "id": "W004",
+    "name": "Seiko Presage Cocktail Time",
+    "brand": "Seiko",
+    "model": "SRPB43",
+    "description": "A sophisticated automatic watch with a sunburst dial inspired by cocktail bar aesthetics, offering elegance at an affordable price.",
+    "price": 450,
+    "discountPrice": 420,
+    "currency": "USD",
+    "category": "Classic",
+    "images": [
+      "https://example.com/images/seiko-presage-front.jpg",
+      "https://example.com/images/seiko-presage-back.jpg"
+    ],
+    "features": {
+      "caseMaterial": "Stainless steel",
+      "caseDiameter": "40.5mm",
+      "dialColor": "Ice blue sunburst",
+      "movement": "Automatic",
+      "waterResistance": "50m",
+      "strapMaterial": "Leather strap",
+      "glass": "Hardlex crystal"
+    },
+    "availability": "In Stock",
+    "stock": 21,
+    "rating": 4.5,
+    "reviewsCount": 96,
+    "createdAt": "2025-09-06T14:10:00Z",
+    "updatedAt": "2025-09-14T16:45:00Z"
+  },
+  {
+    "id": "W005",
+    "name": "Fossil Gen 6 Smartwatch",
+    "brand": "Fossil",
+    "model": "FTW4061",
+    "description": "A stylish smartwatch powered by Wear OS, combining classic Fossil design with modern health, fitness, and connectivity features.",
+    "price": 299,
+    "discountPrice": 269,
+    "currency": "USD",
+    "category": "Fashion",
+    "images": [
+      "https://example.com/images/fossil-gen6-front.jpg",
+      "https://example.com/images/fossil-gen6-side.jpg"
+    ],
+    "features": {
+      "caseMaterial": "Stainless steel",
+      "caseDiameter": "44mm",
+      "dialColor": "Digital AMOLED",
+      "movement": "Digital",
+      "waterResistance": "30m",
+      "strapMaterial": "Stainless steel bracelet",
+      "glass": "Gorilla Glass"
+    },
+    "availability": "Limited Stock",
+    "stock": 8,
+    "rating": 4.4,
+    "reviewsCount": 203,
+    "createdAt": "2025-09-07T09:25:00Z",
+    "updatedAt": "2025-09-16T18:15:00Z"
   }
 ]
