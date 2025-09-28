@@ -1,4 +1,3 @@
-import TargetCursor from "../Shared/TargetCursor";
 import serviceBg from "/public/assets/Photos/Services-bg.jpg";
 import {
   HandHelping,
@@ -48,10 +47,9 @@ const Services = () => {
         style={{ backgroundImage: `url(${serviceBg})` }}
       >
         {/* overlay */}
-        <TargetCursor spinDuration={1} hideDefaultCursor={false} />
         {servicesList.map((service, index) => (
           <div
-            className="cursor-target border-2 backdrop-blur-xs p-3 rounded-lg flex flex-col justify-center"
+            className="border-2 backdrop-blur-xs p-3 rounded-lg flex flex-col justify-center"
             key={index}
           >
             {service.icon && <div>{service.icon}</div>}

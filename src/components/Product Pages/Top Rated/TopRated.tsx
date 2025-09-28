@@ -5,25 +5,35 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+interface Product {
+  name: string;
+  brand: string;
+  images: string[];
+  price: number;
+  discountPrice?: number;
+  rating: number;
+}
+
 const TopRated = () => {
-  const [products, setProducts] = useState([]);
+  // keep active images per card
+  const [activeImages, setActiveImages] = useState<Record<number, string>>({});
+  const [products, setProducts] = useState<Product[]>([]);
+
   useEffect(() => {
-    axios.get("/json/products.json").then((res) => {
+    axios.get<Product[]>("/json/products.json").then((res) => {
       setProducts(res.data);
     });
   }, []);
+
+  const handleImageClick = (index: number, img: string) => {
+    setActiveImages((prev) => ({
+      ...prev,
+      [index]: img,
+    }));
+  };
 
   return (
     <div className="w-full mt-6 flex flex-col items-center justify-center gap-4">
@@ -48,34 +58,41 @@ const TopRated = () => {
                   product.rating < 4 ? "hidden" : "block"
                 }`}
               >
-                <Card className="h-80 flex flex-col">
-                  <CardHeader>
-                    <CardTitle className="text-sm line-clamp-1">
-                      {product.name}
-                    </CardTitle>
-                    <CardDescription className="text-xs">
-                      {product.brand}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="flex-1 flex items-center justify-center">
+                {/* Product Card */}
+                <div className="border-2 rounded-xl p-3 w-full h-full">
+                  <div className="flex flex-col items-center gap-4">
+                    {/* Main Image */}
                     <img
-                      src={product.images[0]}
+                      src={activeImages[index] || product.images[0]}
                       alt={product.name}
-                      className="h-28 object-contain"
+                      className="w-full border-2 h-64 object-cover rounded-md"
                     />
-                  </CardContent>
-                  <CardFooter className="flex flex-col gap-1">
-                    <p className="text-sm font-semibold">
-                      ${product.discountPrice}
-                    </p>
-                    <p className="text-xs line-through text-gray-400">
-                      ${product.price}
-                    </p>
-                    <p className="text-xs text-yellow-500">
-                      ⭐ {product.rating}
-                    </p>
-                  </CardFooter>
-                </Card>
+
+                    {/* Thumbnails */}
+                    <div className="flex items-center justify-center gap-3">
+                      {product.images.map((img, idx) => (
+                        <img
+                          key={idx}
+                          src={img}
+                          onClick={() => handleImageClick(index, img)}
+                          alt={`${product.name} thumbnail`}
+                          className={`w-12 h-12 object-cover cursor-pointer rounded-md border ${
+                            activeImages[index] === img
+                              ? "border-blue-500"
+                              : "border-gray-300"
+                          }`}
+                        />
+                      ))}
+                    </div>
+
+                    {/* Info */}
+                    <div className="flex flex-col justify-start items-start w-full gap-2">
+                      <span className="font-primary justify-start text-xs tracking-wider border-2 p-1 rounded-lg backdrop-blur-lg dark:bg-white/10 bg-black/10">
+                        BEST SELLER 🔥
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </CarouselItem>
             ))}
           </CarouselContent>
