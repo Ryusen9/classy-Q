@@ -86,7 +86,10 @@ const Navbar = () => {
               onMouseEnter={() => item?.subMenu && setSubMenu(true)}
               className="relative group cursor-target hover:bg-white/40 dark:hover:bg-black/40 rounded-lg transition-all duration-200"
             >
-              <NavLink className="flex items-center justify-center text-sm p-2" to={item.href}>
+              <NavLink
+                className="flex items-center justify-center text-sm p-2"
+                to={item.href}
+              >
                 <span className="ml-2">{item.title}</span>
               </NavLink>
 
@@ -94,7 +97,7 @@ const Navbar = () => {
                 <ul
                   onMouseEnter={() => setSubMenu(true)}
                   onMouseLeave={() => setSubMenu(false)}
-                  className={`absolute top-11 left-1/2 ${
+                  className={`absolute top-12 left-1/2 ${
                     subMenu ? "block" : "hidden"
                   } group-hover:block transform -translate-x-1/2 bg-black text-white dark:bg-white dark:text-black rounded-md shadow-lg mt-2 w-48`}
                 >

@@ -7,7 +7,6 @@ import {
 } from "@/components/ui/carousel";
 import { useEffect, useState } from "react";
 import axios from "axios";
-
 interface Product {
   name: string;
   brand: string;
@@ -15,6 +14,7 @@ interface Product {
   price: number;
   discountPrice?: number;
   rating: number;
+  availability: string;
 }
 
 const TopRated = () => {
@@ -65,7 +65,7 @@ const TopRated = () => {
                     <img
                       src={activeImages[index] || product.images[0]}
                       alt={product.name}
-                      className="w-full border-2 h-64 object-cover rounded-md"
+                      className="w-full h-64 object-cover rounded-md"
                     />
 
                     {/* Thumbnails */}
@@ -87,9 +87,29 @@ const TopRated = () => {
 
                     {/* Info */}
                     <div className="flex flex-col justify-start items-start w-full gap-2">
-                      <span className="font-primary justify-start text-xs tracking-wider border-2 p-1 rounded-lg backdrop-blur-lg dark:bg-white/10 bg-black/10">
-                        BEST SELLER 🔥
+                      <span className="text-xs border-1 p-2 rounded-md flex items-center gap-3">
+                        <div
+                          className={`h-2 w-2 animate-ping rounded-full ${
+                            product.availability == "In Stock"
+                              ? "bg-green-500"
+                              : "bg-red-500"
+                          }`}
+                        ></div>
+                        {product.availability == "In Stock" ? (
+                          <span>In Stock</span>
+                        ) : (
+                          <span>Out of Stock</span>
+                        )}
                       </span>
+                      <div className="flex flex-col">
+                        <p className="font-primary tracking-wide text-lg">
+                          {product.name}
+                        </p>
+                        <p className="text-sm font-primary tracking-wider">
+                          {product.brand}
+                        </p>
+                      </div>
+                      <div></div>
                     </div>
                   </div>
                 </div>
