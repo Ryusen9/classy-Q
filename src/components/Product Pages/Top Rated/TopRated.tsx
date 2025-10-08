@@ -125,7 +125,7 @@ const TopRated = () => {
                           <span>🔥</span>
                         </p>
                       </div>
-                      <div className="flex items-center justify-between w-[85%] mx-auto">
+                      <div className="flex flex-wrap items-center justify-center gap-3 mx-auto">
                         <button className="bg-green-500 cursor-pointer text-white py-1 px-3 rounded-md">
                           Buy Now
                         </button>

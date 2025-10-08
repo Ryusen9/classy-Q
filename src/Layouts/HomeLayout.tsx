@@ -1,3 +1,4 @@
+import AboutHome from "@/components/Bento Grid/AboutHome";
 import Hero from "@/components/hero/Hero";
 import TopRated from "@/components/Product Pages/Top Rated/TopRated";
 import Services from "@/components/services/Services";
@@ -8,6 +9,7 @@ const HomeLayout = () => {
       <Hero />
       <Services />
       <TopRated />
+      <AboutHome />
     </>
   );
 };
