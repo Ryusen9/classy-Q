@@ -7,6 +7,8 @@ import {
 } from "@/components/ui/carousel";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import { Heart } from "lucide-react";
 interface Product {
   name: string;
   brand: string;
@@ -15,6 +17,7 @@ interface Product {
   discountPrice?: number;
   rating: number;
   availability: string;
+  id: number;
 }
 
 const TopRated = () => {
@@ -59,7 +62,7 @@ const TopRated = () => {
                 }`}
               >
                 {/* Product Card */}
-                <div className="border-2 rounded-xl p-3 w-full h-full">
+                <div className="border-2 relative rounded-xl p-3 w-full h-full">
                   <div className="flex flex-col items-center gap-4">
                     {/* Main Image */}
                     <img
@@ -109,7 +112,36 @@ const TopRated = () => {
                           {product.brand}
                         </p>
                       </div>
-                      <div></div>
+                      <div>
+                        <p>
+                          Price:{" "}
+                          <span className="line-through">{product.price}</span>{" "}
+                          <span className="text-xs">BDT</span>
+                          <span> / </span>
+                          <span className="text-lg">
+                            {product.discountPrice}
+                          </span>{" "}
+                          <span className="text-xs">BDT</span>
+                          <span>🔥</span>
+                        </p>
+                      </div>
+                      <div className="flex items-center justify-between w-[85%] mx-auto">
+                        <button className="bg-green-500 cursor-pointer text-white py-1 px-3 rounded-md">
+                          Buy Now
+                        </button>
+                        <Link
+                          to={`/product/${product.id}`}
+                          className="bg-blue-500 text-white py-1 px-3 rounded-md"
+                        >
+                          Details
+                        </Link>
+                        <button className="bg-gray-500 cursor-pointer text-white py-1 px-3 rounded-md">
+                          Add to Cart
+                        </button>
+                      </div>
+                      <button className="absolute top-5 right-5 p-2 rounded-full backdrop-blur border hover:bg-red-500 hover:text-white transition duration-300">
+                        <Heart />
+                      </button>
                     </div>
                   </div>
                 </div>
